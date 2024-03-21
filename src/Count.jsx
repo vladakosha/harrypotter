@@ -3,7 +3,6 @@ import { useState } from "react";
 const Count = () => {
   const [count, setCount] = useState(0);
   const [lumos, setLumos] = useState(true);
-  const [name, setName] = useState("Wizard");
 
   const incrementByOne = () => {
     setCount(count + 1);
@@ -25,10 +24,7 @@ const Count = () => {
     setLumos(!lumos);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    setName(event.target[0].value);
-  }
+ 
 
   return (
     <div>
@@ -51,13 +47,9 @@ const Count = () => {
         }}
       >
         {lumos ? <h1 style={{ color: "black" }}>Lumos!</h1> : <h1>Nox!</h1>}
-        <button onClick={toggleLumos}>Create a spell</button>
-        <form action="" onSubmit={handleSubmit}>
-        <input type="text" />
-        <input type="submit" name="" id="" />
-        </form>
-        {name}
+        <button onClick={toggleLumos} style={{margin: '25px'}}>Create a spell</button>
       </div>
+      
     </div>
   );
 };

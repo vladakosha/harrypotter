@@ -4,7 +4,10 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import CharacterCard from "./CharacterCard";
 import Count from "./Count";
-import axios from "axios";
+import axios from "axios"
+import NewWizard from "./NewWizard";
+
+
 
 function App() {
   const [wizards, setWizards] = useState([]);
@@ -13,9 +16,7 @@ function App() {
 
   const harryApiCall = async () => {
     try {
-      const response = await axios.get(
-        "https://potterhead-api.vercel.app/api/characters"
-      );
+      const response = await axios.get("http://localhost:5001/wizards");
       setWizards(response.data);
     } catch (error) {
       setError(error);
@@ -28,6 +29,17 @@ function App() {
     harryApiCall();
   }, []);
 
+  const reloadWizards = async () => {
+    setLoading(true);
+    try {
+      await harryApiCall()
+    } catch (error) {
+      setError(error)
+    } finally {
+      setLoading(false)
+    }
+  };
+
   if (loading) {
     return <p>Loading...</p>;
   }
@@ -39,6 +51,7 @@ function App() {
   return (
     <div style={{ margin: "0 auto" }}>
       <Count />
+      <NewWizard reloadWizards={reloadWizards}/>
       <h1 style={{ color: "#aaaaaa" }}>Harry Potter Characters</h1>
       <ul
         style={{
