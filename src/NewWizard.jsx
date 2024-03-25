@@ -11,7 +11,10 @@ const NewWizard = ({reloadWizards}) => {
      const handleSubmit = async (e) => {
        e.preventDefault();
        try {
-         await axios.post("http://localhost:5001/wizards", form);
+         await axios.post(
+           "https://harrypotter-backend-mc4w.vercel.app/wizards",
+           form
+         );
          reloadWizards()
        } catch (error) {
          console.error("Error adding wizard:", error);
@@ -19,20 +22,36 @@ const NewWizard = ({reloadWizards}) => {
      };
 
      return (
-       <div>
-         <form action="" onSubmit={handleSubmit}>
+       <div
+         style={{ display: "flex", justifyContent: "center", padding: "15px" }}
+       >
+         <form
+           action=""
+           onSubmit={handleSubmit}
+           style={{
+             display: "flex",
+             flexDirection: "column",
+             width: "200px",
+             height: "150px",
+             justifyContent: "space-between",
+           }}
+         >
            <input
              type="text"
              placeholder="name"
              value={form.name}
              onChange={(e) => setForm({ ...form, name: e.target.value })}
            />
-           <input
-             type="text"
-             placeholder="house"
+           <select
              value={form.house}
              onChange={(e) => setForm({ ...form, house: e.target.value })}
-           />
+           >
+             <option value="">Select a house</option>
+             <option value="Gryffindor">Gryffindor</option>
+             <option value="Slytherin">Slytherin</option>
+             <option value="Ravenclaw">Ravenclaw</option>
+             <option value="Hufflepuff">Hufflepuff</option>
+           </select>
            <input
              type="text"
              placeholder="patronus"
