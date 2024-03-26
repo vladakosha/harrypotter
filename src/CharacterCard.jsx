@@ -30,24 +30,39 @@ const CharacterCard = ({ wizard }) => {
 
   const palette = colorPalettes[house] || colorPalettes["Gryffindor"];
 
+  const harryPotterWiki = (characterName) => {
+    return `https://harrypotter.fandom.com/wiki/${characterName
+      .replace(/\s+/g, "_")
+      .toLowerCase()}`;
+  };
+
+  const wikiUrl = harryPotterWiki(name);
+
   return (
-    <div
-      style={{
-        width: "200px",
-        height: "250px",
-        padding: "5px",
-        margin: "10px",
-        border: "1px solid #bebebe",
-        borderRadius: "5px",
-        textAlign: "center",
-        backgroundColor: palette.background,
-      }}
+    <a
+      href={wikiUrl}
+      target="_blank"
+      rel=""
+      style={{textDecoration: "none"}}
     >
-      {/* <img src={image} alt="" style={{ width: "75px" }} /> */}
-      <h2 style={{ color: palette.name }}>{name}</h2>
-      <p style={{ color: palette.house }}>House: {house}</p>
-      <p style={{color: palette.patronus}}>Patronus: {patronus}</p>
-    </div>
+      <div
+        style={{
+          width: "200px",
+          height: "250px",
+          padding: "5px",
+          margin: "10px",
+          border: "1px solid #bebebe",
+          borderRadius: "5px",
+          textAlign: "center",
+          backgroundColor: palette.background,
+        }}
+      >
+        {/* <img src={image} alt="" style={{ width: "75px" }} /> */}
+        <h2 style={{ color: palette.name }}>{name}</h2>
+        <p style={{ color: palette.house }}>House: {house}</p>
+        <p style={{ color: palette.patronus }}>Patronus: {patronus}</p>
+      </div>
+    </a>
   );
 };
 
