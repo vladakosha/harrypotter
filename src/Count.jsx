@@ -27,6 +27,7 @@ const Count = () => {
           display: "flex",
           justifyContent: "space-around",
           margin: "35px",
+          minWidth: '700px'
         }}
       >
         <button onClick={incrementByOne}>Catch 1 Beast</button>

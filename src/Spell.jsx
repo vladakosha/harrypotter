@@ -9,7 +9,7 @@ const Spell = () => {
 
   return (
     <div>
-      {lumos ? <h1 style={{ color: "black", backgroundColor: 'white' }}>Lumos!</h1> : <h1>Nox!</h1>}
+      {lumos ? <h1 style={{ color: "black", backgroundColor: 'white', padding: '30px', width: '600px' }}>Lumos!</h1> : <h1>Nox!</h1>}
       <button onClick={toggleLumos}>Create a spell</button>
     </div>
   );
