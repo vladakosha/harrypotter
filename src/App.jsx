@@ -60,7 +60,7 @@ function App() {
         }}
       >
         {wizards.map((wizard, index) => {
-          if (index < 10) {
+          if (index < 20) {
             return (
               <li key={index} style={{ listStyleType: "none", margin: "30px" }}>
                 <CharacterCard wizard={wizard} />

@@ -41,7 +41,7 @@ const CharacterCard = ({ wizard }) => {
   return (
     <a
       href={wikiUrl}
-      target="_blank"
+      target=""
       rel=""
       style={{textDecoration: "none"}}
     >
